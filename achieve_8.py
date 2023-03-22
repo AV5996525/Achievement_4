@@ -1,7 +1,7 @@
-#Name:          achieve_4.py
+#Name:          achieve_8.py
 #Author:        AJ Varatharajan
 #Date Created:  February 22, 2023
-#Date Last Modified: February 23, 2023
+#Date Last Modified: March 22, 2023
 #Purpose: User is able to input a value as either a temperature or speed and convert to and from it's interchangeable state.
 #
 #This program will output the requested conversion.
@@ -66,20 +66,21 @@ while True:
                     if choiceS == "kmh" :
                         while True:
                             try:
-                                kmhInput = kmToMph(float(input("Enter your speed in kilometers per hour:\n"))) #Prompting user input casting float on the input and saving to variable
-                                if kmhInput.isalpha():
-                                    raise Exception("Integers or decimals only")
+                                kmhInput = kmToMph(float(input("Enter your speed in kilometers per hour:\n"))) #Prompting user input casting float on the input and saving to variable                          
+                                if kmhInput < 0:
+                                    raise Exception
                             except:
-                                print("Integers only")
-                            else:    
+                                print("Positive integers or decimals only")
+                            else:
                                 print("The speed is {} miles per hour".format(kmhInput))
+                          
                     elif choiceS == "mph" :
                         while True:
                             try:
                                 mphInput = mphToKm(float(input("Enter your speed in miles per hour:\n"))) #Prompting user input casting float on the input and saving to variable
-                                if mphInput.isalpha():
-                                    raise Exception("Integers or decimals only")
+                                if mphInput < 0  :
+                                    raise Exception
                             except:
-                                print("Integers only")
+                                print("Positive integers or decimals only")
                             else:
                                 print("The speed is {} kilometers per hour".format(mphInput))             
