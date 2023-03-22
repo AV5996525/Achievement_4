@@ -47,15 +47,39 @@ while True:
                                 print("Integers and decimals only")
                               
                     elif choiceT == "f" :
-                        fahinput = fahToCel(float(input("Enter your fahernite:"))) #Prompting user input casting float on the input and saving to variable
-                        print("The temperature is {} degrees celcius".format(fahinput))
+                        while True:
+                            try:
+                                fahinput = fahToCel(float(input("Enter your fahernite:"))) #Prompting user input casting float on the input and saving to variable
+                                print("The temperature is {} degrees celcius".format(fahinput))
+                            except ValueError:    
+                                print("Integers and decimals only")    
                 
         elif choice == 2:
             while True:
-                choiceS = input("Would you like to convert from Kilometers Per Hour (KMH, kmh) or Miles Per Hour (MPH, mph):\n").strip().lower()  #Prompting user input and stripping spaces, converting to lower case and saving it to a variable
-                if choiceS == "kmh" :
-                    kmhInput = kmToMph(float(input("Enter your speed in kilometers per hour:\n"))) #Prompting user input casting float on the input and saving to variable
-                    print("The speed is {} miles per hour".format(kmhInput))
-                elif choiceS == "mph" :
-                    mphInput = mphToKm(float(input("Enter your speed in miles per hour:\n"))) #Prompting user input casting float on the input and saving to variable
-                    print("The speed is {} kilometers per hour".format(mphInput))             
+                try:
+                    choiceS = input("Would you like to convert from Kilometers Per Hour (KMH, kmh) or Miles Per Hour (MPH, mph):\n").strip().lower()  #Prompting user input and stripping spaces, converting to lower case and saving it to a variable
+                    if choiceS.isdigit() :
+                        raise Exception("Letters only")
+                except:    
+                    print("Letters only")
+                else:
+                    if choiceS == "kmh" :
+                        while True:
+                            try:
+                                kmhInput = kmToMph(float(input("Enter your speed in kilometers per hour:\n"))) #Prompting user input casting float on the input and saving to variable
+                                if kmhInput.isalpha():
+                                    raise Exception("Integers or decimals only")
+                            except:
+                                print("Integers only")
+                            else:    
+                                print("The speed is {} miles per hour".format(kmhInput))
+                    elif choiceS == "mph" :
+                        while True:
+                            try:
+                                mphInput = mphToKm(float(input("Enter your speed in miles per hour:\n"))) #Prompting user input casting float on the input and saving to variable
+                                if mphInput.isalpha():
+                                    raise Exception("Integers or decimals only")
+                            except:
+                                print("Integers only")
+                            else:
+                                print("The speed is {} kilometers per hour".format(mphInput))             
