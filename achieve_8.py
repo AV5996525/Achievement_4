@@ -14,11 +14,13 @@ def fahToCel (fah) : #fahrenheit to celsius function
     conv = (5/9) * (fah-32)
     return conv
 def mphToKm (mph) : #Miles to kilometers function
-    
+    if mph <= 0:
+        raise Exception
     conv = (mph * 1.609344)
     return conv
 def kmToMph (km) : #Kilometers to miles function
-   
+    if km <= 0:
+        raise Exception
     conv = (km / 1.609344)
     return conv
 
@@ -78,8 +80,7 @@ while True:
                         while True:
                             try:
                                 mphInput = mphToKm(float(input("Enter your speed in miles per hour:\n"))) #Prompting user input casting float on the input and saving to variable
-                                if mphInput < 0  :
-                                    raise Exception
+                                
                             except:
                                 print("Positive integers or decimals only")
                             else:
